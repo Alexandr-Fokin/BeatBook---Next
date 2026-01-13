@@ -8,7 +8,7 @@ export default function Page() {
         src="/logo-bad.svg"
         unoptimized
         alt="Логотип"
-        className="h-16 w-fit"
+        className="h-16 w-fit "
         width={1835}
         height={250}
       />
