@@ -10,9 +10,7 @@ export default function LoginPage() {
             <Image src="/logo.svg" alt="Логотип BeatBook"></Image>
           </div>
         </div>
-        <Suspense>
-          <LoginForm />
-        </Suspense>
+        <Suspense>{/* <LoginForm /> */}</Suspense>
       </div>
     </main>
   );
