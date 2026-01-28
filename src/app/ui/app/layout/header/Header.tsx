@@ -2,11 +2,13 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeButton } from "../buttons/Buttons";
+import { createClient } from "@/utils/supabase/server";
+import Account from "./Account";
 
 // import { NavLink, useNavigate } from "react-router-dom";
 // import { useState, useEffect } from "react";
 
-export default function Header() {
+export default async function Header() {
   //   const [searchValue, setSearchValue] = useState("");
   //   const navigate = useNavigate();
 
@@ -20,6 +22,12 @@ export default function Header() {
   //       setSearchValue("");
   //     }
   //   }, [location.pathname]);
+
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <div className={styles.header}>
@@ -48,6 +56,9 @@ export default function Header() {
               />
             </label>
           </form>
+        </div>
+        <div className="">
+          <Account user={user}></Account>
         </div>
       </div>
     </div>
