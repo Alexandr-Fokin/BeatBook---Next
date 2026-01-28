@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   /* =========================
      Scale (основа всего)
@@ -17,7 +16,10 @@
   --color-text: #252525;
   --color-bg: #f0f0f0;
   --color-surface: #ffffff;
-  --color-accent: #38A65D;
+  --color-accent: #38a65d;
+
+  --color-red-bg: rgba(254, 57, 60, 0.15);
+  --color-red-text: #fe393c;
 
   --color-text-75: rgba(37, 37, 37, 0.75);
   --color-text-50: rgba(37, 37, 37, 0.5);
@@ -106,7 +108,7 @@
   --color-text-05: rgba(245, 245, 245, 0.05);
 
   --color-surface-75: rgba(44, 44, 44, 0.75);
-  --color-surface-50: rgba(44, 44, 44, 0.50);
+  --color-surface-50: rgba(44, 44, 44, 0.5);
 
   --color-bg-65: rgba(33, 33, 33, 0.65);
   --color-bg-0: rgba(33, 33, 33, 0);
@@ -131,9 +133,6 @@
   --font-scale: 1.15;
   --ui-scale: 1.15;
 }
-
-
-
 
 /* ---- Инпуты ---- */
 
@@ -165,7 +164,6 @@
   transform: scale(1.02);
 }
 
-
 /* ---- Тайтлы ---- */
 .title {
   color: var(--color-text);
@@ -188,7 +186,6 @@
 .title__xl {
   font-size: calc(38px * var(--font-scale));
 }
-
 
 /*
 

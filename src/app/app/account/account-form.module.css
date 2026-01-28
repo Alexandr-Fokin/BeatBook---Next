@@ -1,0 +1,82 @@
+.account_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+.account_inputs {
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-surface-50);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-text-10);
+}
+.account_inputs :last-child {
+  border: none;
+}
+.account_input_box {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+  padding-left: var(--space-sm);
+  border-bottom: 1px solid var(--color-text-10);
+}
+.account_input_box label {
+  font-size: var(--font-text-lg);
+  color: var(--color-text-75);
+}
+.account_input_box input {
+  font-size: var(--font-text-lg);
+  width: 100%;
+  text-align: right;
+  padding: var(--space-sm);
+  color: var(--color-text);
+}
+.account_input_box input:focus {
+  outline: none;
+  color: var(--color-accent);
+}
+
+.account_input_box input:disabled {
+  opacity: 0.35;
+}
+.account_input_box input:-webkit-autofill {
+  transition: all 0s 50000s;
+}
+
+.account_save_btn {
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-accent);
+  color: #fff;
+  cursor: pointer;
+  transition: var(--transition-base);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-text-lg);
+  font-weight: 500;
+}
+.account_save_btn:hover {
+  background: var(--color-text);
+  color: var(--color-surface);
+}
+
+.account_signout_btn {
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-text-05);
+  color: var(--color-text-75);
+  cursor: pointer;
+  transition: var(--transition-base);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-text-lg);
+  font-weight: 500;
+}
+.account_signout_btn:hover {
+  color: var(--color-red-text);
+  background: var(--color-red-bg);
+}

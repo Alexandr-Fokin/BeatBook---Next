@@ -1,33 +1,35 @@
 "use client";
+
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { type User } from "@supabase/supabase-js";
-import Avatar from "./avatar";
-
-// ...
+import styles from "./account-form.module.css";
+import { redirect } from "next/navigation";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
+
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
 
+  // 🔹 Загрузка профиля
   const getProfile = useCallback(async () => {
+    if (!user) return;
+
     try {
       setLoading(true);
 
       const { data, error, status } = await supabase
         .from("profiles")
-        .select(`name, email, avatar_url, id`)
-        .eq("id", user?.id)
+        .select("name, avatar_url")
+        .eq("id", user.id)
         .single();
 
-      if (error && status !== 406) {
-        console.log(error);
-        throw error;
-      }
+      if (error && status !== 406) throw error;
 
       if (data) {
+        console.log("data есть -", data);
         setName(data.name);
         setAvatarUrl(data.avatar_url);
       }
@@ -36,12 +38,13 @@ export default function AccountForm({ user }: { user: User | null }) {
     } finally {
       setLoading(false);
     }
-  }, [user, supabase]);
+  }, [user]); // ❗ supabase убрали из зависимостей
 
   useEffect(() => {
-    getProfile();
+    if (user) getProfile();
   }, [user, getProfile]);
 
+  // 🔹 Обновление профиля
   async function updateProfile({
     name,
     avatar_url,
@@ -49,75 +52,74 @@ export default function AccountForm({ user }: { user: User | null }) {
     name: string | null;
     avatar_url: string | null;
   }) {
+    if (!user) return;
+    console.log("user есть -", user);
+
     try {
       setLoading(true);
 
-      const { error } = await supabase.from("profiles").upsert({
-        id: user?.id as string,
-        name: name,
-        avatar_url,
-        updated_at: new Date().toISOString(),
-      });
+      const { error } = await supabase.from("profiles").upsert(
+        {
+          id: user.id,
+          name: name,
+          avatar_url: avatar_url,
+        },
+        { onConflict: "id" }, // ❗ защита от дублей
+      );
+
       if (error) throw error;
-      alert("Profile updated!");
+
+      alert("Профиль обновлен!");
     } catch (error) {
-      alert("Error updating the data!");
+      alert("Ошибка обновления профиля. Повторите попытку позже");
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div className="form-widget">
-      <Avatar
-        uid={user?.id ?? null}
-        url={avatar_url}
-        size={150}
-        onUpload={(url) => {
-          setAvatarUrl(url);
-          updateProfile({ name, avatar_url: url });
-        }}
-      />
+    <div className={styles.account_form}>
+      <div className={styles.account_inputs}>
+        <div className={styles.account_input_box}>
+          <label htmlFor="email">Email:</label>
+          <input id="email" type="text" value={user?.email ?? ""} disabled />
+        </div>
 
-      <div>
-        <label htmlFor="email">Email</label>
-        <input id="email" type="text" value={user?.email} disabled />
+        <div className={styles.account_input_box}>
+          <label htmlFor="avatar_url">Ссылка на аватар:</label>
+          <input
+            id="avatar_url"
+            type="text"
+            value={avatar_url ?? ""}
+            onChange={(e) => setAvatarUrl(e.target.value)}
+          />
+        </div>
+
+        <div className={styles.account_input_box}>
+          <label htmlFor="name">Имя пользователя:</label>
+          <input
+            id="name"
+            type="text"
+            value={name ?? ""}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
       </div>
-      <div>
-        <label htmlFor="fullName">Full Name</label>
-        <input
-          id="fullName"
-          type="text"
-          value={name || ""}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      {/* <div>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={username || ""}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </div> */}
 
       <div>
         <button
-          className="button primary block"
-          onClick={() =>
-            updateProfile({ name, avatar_url })
-          }
+          className={styles.account_save_btn}
+          onClick={() => updateProfile({ name, avatar_url })}
           disabled={loading}
         >
-          {loading ? "Loading ..." : "Update"}
+          {loading ? "Сохранение..." : "Сохранить"}
         </button>
       </div>
 
       <div>
         <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
-            Sign out
+          <button className={styles.account_signout_btn} type="submit">
+            Выйти из аккаунта
           </button>
         </form>
       </div>

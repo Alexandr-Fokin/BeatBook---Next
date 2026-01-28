@@ -1,11 +1,13 @@
 "use client";
 import { type User } from "@supabase/supabase-js";
 import { createClient } from "@/utils/supabase/client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import AccountMenuBtn from "./AccountMenuBtn";
+import styles from "./account.module.css";
 
 export default function Account({ user }: { user: User | null }) {
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const supabase = createClient();
   const [profile, setProfile] = useState<{
     name: string;
@@ -15,6 +17,22 @@ export default function Account({ user }: { user: User | null }) {
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   useEffect(() => {
     if (!user) return;
@@ -46,21 +64,38 @@ export default function Account({ user }: { user: User | null }) {
   if (!profile) return <div>No profile found</div>;
 
   return (
-    <div className="account">
+    <div className={styles.account} ref={menuRef}>
       <div
-        className="icon"
+        className={styles.account_icon}
         onClick={() => {
-          setOpen(prev => !prev);
+          setOpen((prev) => !prev);
         }}
       >
-        <Image src={profile.avatar_url} width={40} height={40} alt='Изображение пользователя'></Image>
-        <h1>{profile.name}</h1>
-        <p>{profile.email}</p>
+        <img
+          src={profile.avatar_url}
+          alt="Изображение пользователя"
+          className={styles.account_user_img}
+        ></img>
       </div>
       {open && (
-        <div className="menu">
-          <Link href="/app/account">Мой аккаунт</Link>
-          <p>2314134</p>
+        <div className={styles.account_menu}>
+          <AccountMenuBtn href="/app/account" setOpen={setOpen}>
+            Мой аккаунт
+          </AccountMenuBtn>
+          <AccountMenuBtn href="/app/#" setOpen={setOpen}>
+            Экспорт
+          </AccountMenuBtn>
+          <AccountMenuBtn href="/app/#" setOpen={setOpen}>
+            Импорт
+          </AccountMenuBtn>
+          <form action="/auth/signout" method="post" className="w-full">
+            <button
+              className={styles.account_menu_link + " w-full cursor-pointer"}
+              type="submit"
+            >
+              Выйти
+            </button>
+          </form>
         </div>
       )}
     </div>

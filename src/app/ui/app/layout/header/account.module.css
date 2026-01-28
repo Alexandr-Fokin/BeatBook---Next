@@ -1,0 +1,57 @@
+.account {
+  position: relative;
+  z-index: 9999;
+}
+.account_user_img {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+  object-position: center;
+  cursor: pointer;
+  background: var(--color-surface-75);
+  backdrop-filter: blur(5px);
+  transition: var(--transition-base);
+  border: var(--space-xs) solid var(--color-surface);
+}
+
+.account_user_img:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm-hover);
+}
+
+.account_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--color-surface-50);
+  box-shadow: var(--shadow-md);
+  position: absolute;
+  right: 0;
+  top: 55px;
+  width: 200px;
+  padding: var(--space-xs);
+  border-radius: var(--radius-md);
+}
+.account_menu_link {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text-75);
+  font-size: var(--font-text-lg);
+  font-weight: 500;
+  transition: all 0.3s ease-out;
+  border-radius: var(--radius-sm);
+}
+.account_menu_link:global(.active) {
+  background: var(--color-accent);
+  font-weight: 600;
+  color: #fff;
+}
+.account_menu_link:global(.active):hover {
+  background: var(--color-accent);
+}
+.account_menu_link:hover {
+  background: var(--color-text-07);
+}
