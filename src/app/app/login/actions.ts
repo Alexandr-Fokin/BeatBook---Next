@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { cookies } from "next/headers";
 export async function login(formData: FormData) {
   const supabase = await createClient();
 
@@ -31,6 +32,7 @@ export async function login(formData: FormData) {
       id: data.user.id,
       name: "Новый пользователь",
       email,
+      avatar_url: "/user.svg",
     });
   }
 
@@ -54,6 +56,7 @@ export async function signup(formData: FormData) {
       id: authData.user.id, // обязательно используем id пользователя
       name: "Новый пользователь",
       email: email,
+      avatar_url: "/user.svg",
     });
 
     if (profileError) {
