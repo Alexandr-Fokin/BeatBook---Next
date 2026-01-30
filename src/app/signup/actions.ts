@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import { nanoid } from "nanoid";
 
 export async function signup(formData: FormData) {
   const supabase = await createClient();
@@ -31,7 +32,7 @@ export async function signup(formData: FormData) {
     }
 
     const { error: foldersError } = await supabase.from("folders").insert({
-      id: 1111,
+      public_id: nanoid(22),
       user_id: authData.user.id,
       name: "Тестовая папка",
       icon: 1,

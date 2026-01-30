@@ -11,7 +11,19 @@ export default function AccountForm({ user }: { user: User | null }) {
 
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState<string | null>(null);
+  const [username, setUsername] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
+
+  const usernameRegex = /^[a-z0-9.]+$/;
+  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toLowerCase(); // автоматически в нижний регистр
+    if (value === "" || usernameRegex.test(value)) {
+      setUsername(value);
+    } else {
+      // Можно показывать подсказку или просто не разрешать ввод
+      alert("Допустимы только: маленькие буквы, цифры, и знак '.'");
+    }
+  };
 
   // 🔹 Загрузка профиля
   const getProfile = useCallback(async () => {
@@ -22,7 +34,7 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       const { data, error, status } = await supabase
         .from("profiles")
-        .select("name, avatar_url")
+        .select("name, avatar_url, username")
         .eq("id", user.id)
         .single();
 
@@ -31,6 +43,7 @@ export default function AccountForm({ user }: { user: User | null }) {
       if (data) {
         console.log("data есть -", data);
         setName(data.name);
+        setUsername(data.username);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
@@ -48,9 +61,11 @@ export default function AccountForm({ user }: { user: User | null }) {
   async function updateProfile({
     name,
     avatar_url,
+    username,
   }: {
     name: string | null;
     avatar_url: string | null;
+    username: string | null;
   }) {
     if (!user) return;
     console.log("user есть -", user);
@@ -63,6 +78,7 @@ export default function AccountForm({ user }: { user: User | null }) {
           id: user.id,
           name: name,
           avatar_url: avatar_url,
+          username: username,
         },
         { onConflict: "id" }, // ❗ защита от дублей
       );
@@ -86,16 +102,6 @@ export default function AccountForm({ user }: { user: User | null }) {
         </div>
 
         <div className={styles.account_input_box}>
-          <label htmlFor="avatar_url">Ссылка на аватар:</label>
-          <input
-            id="avatar_url"
-            type="text"
-            value={avatar_url ?? ""}
-            onChange={(e) => setAvatarUrl(e.target.value)}
-          />
-        </div>
-
-        <div className={styles.account_input_box}>
           <label htmlFor="name">Имя пользователя:</label>
           <input
             id="name"
@@ -104,12 +110,32 @@ export default function AccountForm({ user }: { user: User | null }) {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
+        <div className={styles.account_input_box}>
+          <label htmlFor="username">Юзернейм:</label>
+          <input
+            id="username"
+            type="text"
+            value={username ?? ""}
+            onChange={(e) => handleUsernameChange(e)}
+          />
+        </div>
+
+        <div className={styles.account_input_box}>
+          <label htmlFor="avatar_url">Ссылка на аватар:</label>
+          <input
+            id="avatar_url"
+            type="text"
+            value={avatar_url ?? ""}
+            onChange={(e) => setAvatarUrl(e.target.value)}
+          />
+        </div>
       </div>
 
       <div>
         <button
           className={styles.account_save_btn}
-          onClick={() => updateProfile({ name, avatar_url })}
+          onClick={() => updateProfile({ name, avatar_url, username })}
           disabled={loading}
         >
           {loading ? "Сохранение..." : "Сохранить"}
