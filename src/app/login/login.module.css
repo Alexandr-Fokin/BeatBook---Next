@@ -1,0 +1,124 @@
+body > :global(.layout-login){
+  margin: 0;
+
+  /* background: linear-gradient(120deg, #f6d365 0%, #fda085 30%, #a1c4fd 70%, #c2e9fb 100%);
+
+  background-size: 400% 400%; */
+  /* animation: gradientFlow 12s ease infinite; */
+  position: relative;
+  overflow: hidden;
+}
+/* @keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */
+body > :global(.layout-login)::before {
+    content: '';
+    height: 85vh;
+    width: 85vh;
+    background: url('/plast-2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.05;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 10;
+    animation: circle;
+    animation-timing-function: linear;
+    animation-duration: 20s;
+    animation-delay: 0;
+    animation-iteration-count: infinite;
+}
+@keyframes circle{
+    0% {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 99;
+}
+.logo_id {
+    height: 18px;
+    width: fit-content;
+    margin-bottom: 15px;
+}
+.login_title {
+    font-size: var(--font-title-lg);
+    font-weight: 700;
+    line-height: var(--line-md);
+    color: var(--color-text);
+
+}
+.login_form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 400px;
+  padding: var(--space-md);
+  background: var(--color-surface-50);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(7px);
+  margin-bottom: 50px;
+}
+.form_input_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+.form_input_box label {
+  font-size: var(--font-text-md);
+  color: var(--color-text-75);
+}
+.form_input_box input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  border: 1px solid var(--color-text-10);
+  font-size: var(--font-text-lg);
+  font-weight: 500;
+  line-height: 135%;
+  background: transparent !important;
+}
+.form_input_box input:focus {
+  outline: none;
+  color: var(--color-accent);
+}
+.form_input_box input::placeholder {
+  color: var(--color-text-50);
+}
+.login_form .form_login_btn {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  background: var(--color-accent);
+  font-size: var(--font-text-lg);
+  font-weight: 700;
+  line-height: 135%;
+}

@@ -219,7 +219,7 @@ export const FolderIcon99 = () => {
   );
 };
 
-const folderIcons = {
+export const folderIcons = {
   1: FolderIcon1,
   2: FolderIcon2,
   3: FolderIcon3,

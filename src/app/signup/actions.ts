@@ -4,47 +4,13 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
-export async function login(formData: FormData) {
-  const supabase = await createClient();
-
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
-
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-  if (error) {
-    console.log("Ошибка при входе: " + error.message);
-    return;
-  }
-
-  // Проверяем профиль
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("id", data.user.id)
-    .single();
-
-  if (!profile) {
-    await supabase.from("profiles").insert({
-      id: data.user.id,
-      name: "Новый пользователь",
-      email,
-      avatar_url: "/user.svg",
-    });
-  }
-
-  revalidatePath("/app", "layout");
-  redirect("/app");
-}
 
 export async function signup(formData: FormData) {
   const supabase = await createClient();
 
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
+  const name = formData.get("name") as string;
 
   const { data: authData, error: signUpError } = await supabase.auth.signUp({
     email,
@@ -54,13 +20,25 @@ export async function signup(formData: FormData) {
   if (authData.user) {
     const { error: profileError } = await supabase.from("profiles").insert({
       id: authData.user.id, // обязательно используем id пользователя
-      name: "Новый пользователь",
+      name: name || "Новый пользователь",
       email: email,
       avatar_url: "/user.svg",
     });
 
     if (profileError) {
       console.log("Ошибка при создании профиля: " + profileError.message);
+      return;
+    }
+
+    const { error: foldersError } = await supabase.from("folders").insert({
+      id: 1111,
+      user_id: authData.user.id,
+      name: "Тестовая папка",
+      icon: 1,
+    });
+
+    if (foldersError) {
+      console.log("Ошибка при создании папок: " + foldersError.message);
       return;
     }
   }
@@ -70,6 +48,6 @@ export async function signup(formData: FormData) {
     return;
   }
 
-  revalidatePath("/app", "layout");
-  redirect("/app");
+  revalidatePath("/", "layout");
+  redirect("/signup/confirm-email");
 }
