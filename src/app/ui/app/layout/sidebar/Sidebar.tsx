@@ -17,7 +17,7 @@ export default async function Sidebar() {
     const { data, error: foldersError } = await supabase
       .from("folders")
       .select()
-      .eq("user_id", user.id);
+      .eq("owner_id", user.id);
 
     if (foldersError) console.log("Ошибка при получении папок");
     foldersData = data || [];
