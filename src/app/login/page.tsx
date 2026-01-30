@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { signup, login } from "./actions";
+import { login } from "./actions";
 import styles from "./login.module.css";
 
 export default function LoginPage() {
@@ -10,17 +10,29 @@ export default function LoginPage() {
       <form action="" className={styles.login_form}>
         <div className={styles.form_input_box}>
           {/* <label htmlFor="email">Email:</label> */}
-          <input id="email" name="email" type="email" placeholder="Email" required />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+          />
         </div>
         <div className={styles.form_input_box}>
           {/* <label htmlFor="password">Пароль:</label> */}
-          <input id="password" name="password" type="password" placeholder="Пароль" required />
+          <input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Пароль"
+            required
+          />
         </div>
         <button formAction={login} className={styles.form_login_btn}>
           Войти
         </button>
         <p>
-          Нет аккаунта? <Link href='/signup'>Зарегистрируйтесь</Link>
+          Нет аккаунта? <Link href="/signup">Зарегистрируйтесь</Link>
         </p>
       </form>
     </div>
