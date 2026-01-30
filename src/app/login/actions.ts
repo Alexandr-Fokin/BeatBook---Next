@@ -31,7 +31,7 @@ export async function login(formData: FormData) {
   if (profile) {
     const { error: foldersError } = await supabase.from("folders").insert({
       public_id: nanoid(22),
-      user_id: data.user.id,
+      owner_id: data.user.id,
       name: "Тестовая папка",
       icon: 1,
     });
