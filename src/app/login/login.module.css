@@ -78,7 +78,7 @@ body > :global(.layout-login)::before {
   max-width: 400px;
   padding: var(--space-md);
   background: var(--color-surface-50);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shad-md);
   border-radius: var(--radius-lg);
   backdrop-filter: blur(7px);
   margin-bottom: 50px;

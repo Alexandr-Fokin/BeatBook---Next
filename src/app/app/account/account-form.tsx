@@ -4,15 +4,17 @@ import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { type User } from "@supabase/supabase-js";
 import styles from "./account-form.module.css";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { useUI } from "@/app/providers/UIProvider";
 
 export default function AccountForm({ user }: { user: User | null }) {
   const supabase = createClient();
-
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [name, setName] = useState<string | null>(null);
   const [username, setUsername] = useState<string | null>(null);
   const [avatar_url, setAvatarUrl] = useState<string | null>(null);
+  const {showToast} = useUI();
 
   const usernameRegex = /^[a-z0-9.]+$/;
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,9 +87,11 @@ export default function AccountForm({ user }: { user: User | null }) {
 
       if (error) throw error;
 
-      alert("Профиль обновлен!");
+      showToast("Профиль обновлен!", 'Ваш профиль успешно обновлен', 'success');
+      router.refresh();
     } catch (error) {
-      alert("Ошибка обновления профиля. Повторите попытку позже");
+      showToast("Ошибка при обновлении", 'Ошибка обновления профиля. Повторите попытку позже', 'error');
+      router.refresh();
     } finally {
       setLoading(false);
     }

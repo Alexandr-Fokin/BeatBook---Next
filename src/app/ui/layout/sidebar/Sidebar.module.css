@@ -2,7 +2,7 @@
     padding: var(--space-sm);
     background: var(--color-surface-50);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shad-md);
     height: 100%;
     position: sticky;
     top: var(--space-sm);

@@ -1,0 +1,117 @@
+.item {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: var(--space-sm);
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--space-sm);
+  background: transparent;
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
+  background: transparent;
+  width: 100%;
+  cursor: pointer;
+}
+
+.item:hover {
+  background: var(--color-surface-75);
+}
+
+.item:hover .item__right_like {
+  transform: scale(1.25);
+}
+
+.item__left {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-sm);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item__left_img {
+  border-radius: var(--radius-sm);
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background: var(--color-text-07);
+}
+
+.item__left_right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.item__left_name {
+  font-size: var(--font-text-lg);
+  color: var(--color-text);
+  font-weight: 600;
+  text-align: left;
+}
+
+.item__left_meta {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+  font-size: var(--font-text-sm);
+  color:  var(--color-text-75);
+  font-weight: 500;
+}
+
+.item__right_authors {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: var(--font-text-md);
+  color: var(--color-text-75);
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-xs);
+}
+
+.item__right_authors a {
+  transition: var(--transition-base);
+}
+
+.item__right_authors a:hover {
+  color: var(--color-accent);
+}
+
+.item__right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: var(--space-lg);
+}
+
+.item__right_like {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-text-20);
+  border-radius: var(--radius-xl);
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.added .item__right_like {
+  background: var(--color-accent);
+}
+
+.item__right_like img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.item:hover .item__right_like:hover {
+  background: var(--color-text);
+}

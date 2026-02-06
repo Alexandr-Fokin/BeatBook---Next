@@ -11,6 +11,7 @@
     font-size: var(--font-text-lg);
     font-weight: 500;
     color: var(--color-text);
+    position: relative;
 }
 
 
@@ -43,10 +44,31 @@
 .button__folder:hover svg path {
     fill: var(--color-accent);
 }
+.button_folder_shared {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background:  var(--color-accent);
+    width: 15px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-xl);
+    opacity: 0.35;
+}
+.button_folder_shared img {
+    width: 8px !important;
+    height: 8px !important;
+    object-fit: contain;
+}
 
-
-
-
+.button__folder:global(.active) .button_folder_shared {
+    background: var(--color-accent);
+    opacity: 1;
+}
 
 
 
@@ -54,7 +76,7 @@
     height: 46px;
     width: 46px;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shad-sm);
     background: var(--color-surface-75);
     transition: var(--transition-base);
     backdrop-filter: blur(5px);
@@ -72,7 +94,7 @@
 
 .button__home:hover {
     transform: scale(1.05);
-    box-shadow: var(--shadow-sm-hover);
+    box-shadow: var(--shad-sm-hover);
 }
 
 .button__home:hover svg path {

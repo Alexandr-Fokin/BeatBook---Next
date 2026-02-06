@@ -1,0 +1,108 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0px;
+    background: transparent;
+    transition: all .3s ease-out;
+    padding: var(--space-sm);
+    cursor: pointer;
+    width: 100%;
+}
+
+.item:hover .item__img {
+    box-shadow: 0px 6px 15px 0px rgba(37, 37, 37, 0.45);
+    transform: scale(1.007);
+}
+:global([data-theme="dark"]) .item:hover .item__img {
+    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.4);
+}
+
+.item__top {
+    position: relative;
+    height: fit-content;
+    display: flex;
+    width: 100%;
+}
+
+.item__img {
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    background: rgba(37, 37, 37, 0.05);
+    border-radius: 15px;
+    background: #f0f0f0;
+    transition: all .3s ease-out;
+    box-shadow: 0px 2px 15px 0px rgba(37, 37, 37, 0.15);
+}
+:global([data-theme="dark"]) .item__img {
+    box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.15);
+}
+.item__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: var(--space-sm) var(--space-xs) var(--space-xs) var(--space-xs);
+    width: 100%;
+}
+
+.item__name {
+    font-size: var(--font-text-md);
+    color: var(--color-text);
+    font-weight: 600;
+    max-width: 90%;
+    width: 100%;
+}
+
+.item__meta {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+    font-size: var(--font-text-sm);
+    color: var(--color-text-75);
+    font-weight: 500;
+}
+
+.item__like {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-surface-75);
+    box-shadow: 0px 2px 15px 0px rgba(37, 37, 37, 0.25);
+    backdrop-filter: blur(5px);
+    border-radius: var(--radius-xl);
+    transition: all .3s ease-out;
+    cursor: pointer;
+    position: absolute;
+    top: var(--space-sm);
+    left: var(--space-sm);
+}
+:global([data-theme="dark"]) .item__like img{
+    filter: none;
+}
+.item:hover .item__like {
+    transform: scale(1.25);
+}
+
+
+.added .item__like {
+    background: var(--color-accent);
+}
+
+.item__like img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    filter: invert(1);
+    opacity: 0.65;
+}
+
+.added .item__like img {
+    filter: none;
+    opacity: 1;
+}

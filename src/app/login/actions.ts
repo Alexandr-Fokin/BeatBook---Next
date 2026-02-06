@@ -28,19 +28,19 @@ export async function login(formData: FormData) {
     .eq("id", data.user.id)
     .single();
 
-  if (profile) {
-    const { error: foldersError } = await supabase.from("folders").insert({
-      public_id: nanoid(22),
-      owner_id: data.user.id,
-      name: "Тестовая папка",
-      icon: 1,
-    });
+  // if (profile) {
+  //   const { error: foldersError } = await supabase.from("folders").insert({
+  //     public_id: nanoid(22),
+  //     owner_id: data.user.id,
+  //     name: "Тестовая папка",
+  //     icon: 1,
+  //   });
 
-    if (foldersError) {
-      console.log("Ошибка при создании папок: " + foldersError.message);
-      return;
-    }
-  }
+  //   if (foldersError) {
+  //     console.log("Ошибка при создании папок: " + foldersError.message);
+  //     return;
+  //   }
+  // }
 
   if (!profile) {
     await supabase.from("profiles").insert({

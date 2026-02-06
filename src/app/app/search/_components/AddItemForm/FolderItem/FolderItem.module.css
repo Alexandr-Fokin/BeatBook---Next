@@ -1,0 +1,43 @@
+.folder__item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    transition: all .3s ease-out;
+    cursor: pointer;
+}
+
+.folder__item:hover {
+    background: #f0f0f0;
+}
+
+.folder__item_like {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(37, 37, 37, 0.5);
+    border-radius: 50px;
+    font-size: 16px;
+    transition: all .3s ease-out;
+    cursor: pointer;
+}
+
+.added.folder__item_like {
+    background: #38A65D;
+}
+
+.folder__item_like img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.folder__item_like:hover {
+    background: #252525;
+}

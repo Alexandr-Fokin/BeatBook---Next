@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
+import Image from "next/image";
 
 import { FolderIcon } from "@/app/ui/FolderIcons";
 import styles from "./Buttons.module.css";
@@ -10,11 +11,18 @@ import styles from "./Buttons.module.css";
 interface FolderButtonProps {
   link: string;
   id: number;
+  shared?: boolean;
   children: ReactNode;
 }
 
-export function FolderButton({ link, id, children }: FolderButtonProps) {
+export function FolderButton({
+  link,
+  id,
+  children,
+  shared = false,
+}: FolderButtonProps) {
   const pathname = usePathname();
+
   return (
     <Link
       href={link}
@@ -22,6 +30,16 @@ export function FolderButton({ link, id, children }: FolderButtonProps) {
         pathname === link ? " active" : ""
       }`}
     >
+      {shared && (
+        <div className={styles.button_folder_shared}>
+          <Image
+            src="/icons/shared.svg"
+            alt="Общий доступ"
+            height={10}
+            width={10}
+          />
+        </div>
+      )}
       <FolderIcon id={id} />
       {children}
     </Link>

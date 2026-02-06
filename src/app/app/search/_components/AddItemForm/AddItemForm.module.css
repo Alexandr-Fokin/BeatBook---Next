@@ -1,0 +1,63 @@
+.add_album__info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.add_album__info_left {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.add_album__info_right {
+    max-width: 85%;
+    width: fit-content;
+}
+
+.add_album__info_name {
+    text-align: left;
+    font-size: 12px;
+    line-height: 125%;
+    font-weight: 600;
+    color: #252525;
+}
+
+.add_album__folders {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    justify-content: flex-start;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0px 2px 10px 0px rgba(37, 37, 37, 0.1);
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 4px;
+}
+
+.add_album__tools {
+    margin-top: 10px;
+}
+
+.add_album__tools_add_folder_btn {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 50px;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: rgba(37, 37, 37, 0.5);
+    font-weight: 500;
+    transition: all .3s ease-out;
+    font-size: 15px;
+    line-height: 125%;
+}
+
+.add_album__tools_add_folder_btn:hover {
+    background: #e8e8e8;
+}

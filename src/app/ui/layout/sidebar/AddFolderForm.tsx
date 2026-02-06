@@ -1,11 +1,12 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import styles from "./AddFolderForm.module.css";
 import { nanoid } from "nanoid";
 import { FolderIcon, folderIcons } from "@/app/ui/FolderIcons";
 
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { useUI } from "@/app/providers/UIProvider";
 
 type AddFolderFormProps = {
   setFolderForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,7 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
   const [folderName, setFolderName] = useState("");
   const [folderIcon, setFolderIcon] = useState(1);
   const [folderIconMenu, setFolderIconMenu] = useState(false);
+  const { showToast } = useUI();
 
   const router = useRouter();
   const supabase = createClient();
@@ -22,19 +24,42 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
     e.preventDefault();
 
     const folderId = nanoid(22);
-    const { error } = await supabase.from("folders").insert({
-      name: folderName,
-      icon: folderIcon,
-      public_id: folderId,
-    });
+    const { data, error } = await supabase
+      .from("folders")
+      .insert({
+        name: folderName,
+        icon: folderIcon,
+        public_id: folderId,
+      })
+      .select()
+      .single();
 
+      console.log(data)
     if (error) {
       console.log(error.message);
       alert("Ошибка при создании папки");
     }
 
+    const { error: membersError } = await supabase
+      .from("folder_members")
+      .insert({
+        folder_id: data.id,
+        role: "owner",
+      });
+
+    if (membersError) {
+      console.log(membersError.message);
+      alert("Ошибка при добавлении роли папки");
+    }
+
+    showToast(
+      "Папка создана",
+      `Папка "${folderName}" успешно создана`,
+      "success",
+    );
+
     setFolderForm(false);
-    
+
     router.push(`/app/folder/${folderId}`);
     router.refresh();
 
@@ -45,6 +70,7 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
     setFolderIcon(key);
     setFolderIconMenu(false);
   }
+
   return (
     <div className={styles.add_folder}>
       <form className={styles.add_folder__form} onSubmit={addFolder}>

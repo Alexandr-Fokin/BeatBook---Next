@@ -23,12 +23,19 @@
 
   --color-text-75: rgba(37, 37, 37, 0.75);
   --color-text-50: rgba(37, 37, 37, 0.5);
+  --color-text-20: rgba(37, 37, 37, 0.2);
   --color-text-10: rgba(37, 37, 37, 0.1);
   --color-text-07: rgba(37, 37, 37, 0.07);
   --color-text-05: rgba(37, 37, 37, 0.05);
 
   --color-surface-75: rgba(255, 255, 255, 0.75);
   --color-surface-50: rgba(255, 255, 255, 0.5);
+
+  --color-info: #3c7aff;
+  --color-success: #16a34a;
+
+  --gradient-info: linear-gradient(180deg, #74a0ff 0%, #3c7aff 100%);
+  --gradient-success: linear-gradient(180deg, #4fdb5d 0%, #16a34a 100%);
 
   --color-bg-65: rgba(240, 240, 240, 0.65);
   --color-bg-0: rgba(240, 240, 240, 0);
@@ -70,11 +77,19 @@
   /* =========================
      Shadow
   ========================= */
-  --shadow-sm: 0 2px 15px rgba(37, 37, 37, 0.15);
-  --shadow-sm-hover: 0 4px 20px rgba(37, 37, 37, 0.25);
-  --shadow-md: 0 2px 25px rgba(37, 37, 37, 0.1);
-  --shadow-md-hover: 0 0 10px 3px rgba(37, 37, 37, 0.15);
+  --shad-xs: 0 0px 4px rgba(37, 37, 37, 0.25);
+  --shad-xs-hover: 0 1px 6px rgba(37, 37, 37, 0.35);
+  --shad-sm: 0 1px 8px rgba(37, 37, 37, 0.15);
+  --shad-sm-hover: 0 3px 12px rgba(37, 37, 37, 0.25);
+  --shad-md: 0 2px 20px rgba(37, 37, 37, 0.1);
+  --shad-md-hover: 0 2px 22px rgba(37, 37, 37, 0.2);
 
+  --shad-light-xs: 0 0px 6px rgba(37, 37, 37, 0.1);
+  --shad-light-xs-hover: 0 1px 6px rgba(37, 37, 37, 0.2);
+  --shad-light-sm: 0 1px 12px rgba(37, 37, 37, 0.05);
+  --shad-light-sm-hover: 0 3px 15px rgba(37, 37, 37, 0.1);
+  --shad-light-md: 0 2px 20px rgba(37, 37, 37, 0.05);
+  --shad-light-md-hover: 0 0 22px rgba(37, 37, 37, 0.1);
   /* =========================
      Motion
   ========================= */
@@ -103,6 +118,7 @@
 
   --color-text-75: rgba(245, 245, 245, 0.75);
   --color-text-50: rgba(245, 245, 245, 0.5);
+  --color-text-20: rgba(245, 245, 245, 0.2);
   --color-text-10: rgba(245, 245, 245, 0.1);
   --color-text-07: rgba(245, 245, 245, 0.07);
   --color-text-05: rgba(245, 245, 245, 0.05);
@@ -113,10 +129,19 @@
   --color-bg-65: rgba(33, 33, 33, 0.65);
   --color-bg-0: rgba(33, 33, 33, 0);
 
-  --shadow-sm: 0 2px 15px rgba(0, 0, 0, 0.15);
-  --shadow-sm-hover: 0 4px 20px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 2px 25px rgba(0, 0, 0, 0.1);
-  --shadow-md-hover: 0 2px 10px 3px rgba(0, 0, 0, 0.2);
+  --shad-xs: 0 0px 4px rgba(0, 0, 0, 0.25);
+  --shad-xs-hover: 0 1px 6px rgba(0, 0, 0, 0.35);
+  --shad-sm: 0 1px 8px rgba(0, 0, 0, 0.15);
+  --shad-sm-hover: 0 3px 12px rgba(0, 0, 0, 0.25);
+  --shad-md: 0 2px 20px rgba(0, 0, 0, 0.1);
+  --shad-md-hover: 0 2px 22px rgba(0, 0, 0, 0.2);
+
+  --shad-light-xs: 0 0px 6px rgba(0, 0, 0, 0.1);
+  --shad-light-xs-hover: 0 1px 6px rgba(0, 0, 0, 0.2);
+  --shad-light-sm: 0 1px 12px rgba(0, 0, 0, 0.05);
+  --shad-light-sm-hover: 0 3px 15px rgba(0, 0, 0, 0.1);
+  --shad-light-md: 0 2px 20px rgba(0, 0, 0, 0.05);
+  --shad-light-md-hover: 0 0 22px rgba(0, 0, 0, 0.1);
 }
 
 [data-scale="sm"] {
@@ -154,13 +179,13 @@
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-xl);
   background: var(--color-white);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shad-md);
   border: none;
 }
 
 .input__md:hover,
 .input__md:focus {
-  box-shadow: var(--shadow-hover);
+  box-shadow: var(--shad-md-hover);
   transform: scale(1.02);
 }
 
@@ -208,3 +233,78 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+.default_btn_destructive {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  box-sizing: border-box;
+  border-radius: var(--radius-lg);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  background: var(--color-red-bg);
+  color: var(--color-red-text);
+  font-weight: 500;
+  transition: var(--transition-base);
+  font-size: var(--font-text-lg);
+  line-height: var(--line-md);
+  backdrop-filter: blur(5px);
+}
+
+.default_btn_destructive:hover {
+  background: rgba(140, 0, 0, 0.3);
+  color: #d20000;
+}
+
+.default_btn_secondary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  box-sizing: border-box;
+  border-radius: 50px;
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  background: var(--color-text-07);
+  color: var(--color-text);
+  font-weight: 500;
+  transition: var(--transition-base);
+  font-size: var(--font-text-lg);
+  line-height: var(--line-md);
+  backdrop-filter: blur(5px);
+}
+
+.default_btn_secondary:hover {
+  background: var(--color-text-20);
+}
+
+.popup_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  width: 100%;
+}
+.popup_block h4 {
+  font-size: var(--font-text-md);
+  margin-left: var(--space-sm);
+  font-weight: 600;
+  color: var(--color-text-50);
+  line-height: var(--line-md);
+}
+.popup_block_inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-75);
+  box-shadow: var(--shad-light-sm);
+  width: 100%;
+}
