@@ -21,7 +21,7 @@ export default function AddItemForm() {
 
   return (
     <div className="add_album">
-      <div className={styles.add_album__info}>
+      {/* <div className={styles.add_album__info}>
         <img
           className={styles.add_album__info_left}
           src={
@@ -32,7 +32,7 @@ export default function AddItemForm() {
         <div className={styles.add_album__info_right}>
           <div className={styles.add_album__info_name}>{item.name}</div>
         </div>
-      </div>
+      </div> */}
       <div className={styles.add_album__tools}>
         {/* <label htmlFor="" className={styles.add_album__tools_search}>
           <input type="text" placeholder="Поиск" />
