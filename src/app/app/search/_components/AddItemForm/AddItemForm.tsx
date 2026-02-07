@@ -5,18 +5,19 @@ import { useEffect, useState } from "react";
 import { useUser } from "@/app/providers/UserProvider";
 // import { useAppContext } from "../appContext/AppContext";
 
-export default function AddItemForm(item) {
+// export default function AddItemForm(item) {
+export default function AddItemForm() {
   // const { userData, setUserData } = useAppContext();
-  const [folders,setFolders] = useState([])
-  const user = useUser();
-  useEffect(() => {
-    if (!user) return;
-    const getFolders = async () => {
-      const folders = await getUserFolders(user.id);
-      setFolders(folders)
-    };
-    getFolders();
-  }, []);
+  // const [folders,setFolders] = useState([])
+  // const user = useUser();
+  // useEffect(() => {
+  //   if (!user) return;
+  //   const getFolders = async () => {
+  //     const folders = await getUserFolders(user.id);
+  //     setFolders(folders)
+  //   };
+  //   getFolders();
+  // }, []);
 
   return (
     <div className="add_album">
@@ -43,13 +44,13 @@ export default function AddItemForm(item) {
         </div> */}
       </div>
       <div className={styles.add_album__folders}>
-        {folders?.map((folder) => (
+        {/* {folders?.map((folder) => (
           <FormFolderItem
             folder={folder}
             item={item}
             key={folder.id}
           ></FormFolderItem>
-        ))}
+        ))} */}
       </div>
     </div>
   );
