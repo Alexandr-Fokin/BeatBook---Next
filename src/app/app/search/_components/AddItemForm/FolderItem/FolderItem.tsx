@@ -5,7 +5,8 @@ import styles from "./FolderItem.module.css";
 // import { DataStore } from "../../dataStore";
 // import { useAppContext } from "../appContext/AppContext";
 
-export default function FormFolderItem({ folder, item }) {
+// export default function FormFolderItem({ folder, item }) {
+  export default function FormFolderItem({ }) {
   //   console.log("FormFolderItem, item -", item);
   //   const { userData, setUserData } = useAppContext();
   //   async function ToggleItemToFolder(item, folderToAdd) {
@@ -130,7 +131,7 @@ export default function FormFolderItem({ folder, item }) {
       className={styles.folder__item}
     //   onClick={() => ToggleItemToFolder(item, folder)}
     >
-      <div>{folder.name}</div>
+      {/* <div>{folder.name}</div> */}
       {/* <a>
         {userData.added.find((addedItem) => addedItem.id == item.id)?.folder.some((f) => f.id == folder.id) ? (
           <div className={`${styles.folder__item_like} ${styles.added}`}>
