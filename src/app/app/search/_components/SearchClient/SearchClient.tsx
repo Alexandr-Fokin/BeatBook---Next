@@ -5,6 +5,7 @@ import styles from "./SearchClient.module.css";
 import SearchItemAlbum from "../SearchItemAlbum/SearchItemAlbum";
 import SearchItemTrack from "../SearchItemTrack/SearchItemTrack";
 import { useSearchParams } from "next/navigation";
+import { SearchAlbum, SearchTrack } from "@/lib/definitions";
 
 type SearchClientProps = {
   initialData: typeof searchAlbumsData extends Promise<infer R> ? R : any;
@@ -91,7 +92,7 @@ export default function SearchClient({ initialData }: SearchClientProps) {
               ref={containerRef}
               className={`${styles.search__albums_items} flex flex-col`}
             >
-              {searchData.albums.items.slice(0, visibleCount).map((album) => (
+              {searchData.albums.items.slice(0, visibleCount).map((album: SearchAlbum) => (
                 <SearchItemAlbum key={album.id} data={album} />
               ))}
             </div>
@@ -104,7 +105,7 @@ export default function SearchClient({ initialData }: SearchClientProps) {
             >
               Треки
             </a>
-            {searchData.tracks.items.slice(0, 5).map((track) => (
+            {searchData.tracks.items.slice(0, 5).map((track: SearchTrack) => (
               <SearchItemTrack key={track.id} data={track} />
             ))}
           </div>
@@ -115,7 +116,7 @@ export default function SearchClient({ initialData }: SearchClientProps) {
         <div className="albums flex flex-col">
           <h3 className={styles.search__title}>Все альбомы</h3>
           <div className={`${styles.search__albums_items} flex flex-col`}>
-            {searchData.albums.items.map((album) => (
+            {searchData.albums.items.map((album : SearchAlbum) => (
               <SearchItemAlbum key={album.id} data={album} />
             ))}
           </div>
@@ -125,7 +126,7 @@ export default function SearchClient({ initialData }: SearchClientProps) {
       {searchType === "tracks" && (
         <div className="albums flex flex-col">
           <h3 className={styles.search__title}>Все треки</h3>
-          {searchData.tracks.items.map((track) => (
+          {searchData.tracks.items.map((track : SearchTrack) => (
             <SearchItemTrack key={track.id} data={track} />
           ))}
         </div>
