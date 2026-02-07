@@ -21,7 +21,7 @@ export default function SearchItemAlbum({ data }: { data: SearchAlbum }) {
     <li
       className={styles.item + (data.isAdded ? ` ${styles.added}` : "")}
       onClick={() => {
-        showModal(<AddItemForm item={data}/>);
+        // showModal(<AddItemForm item={data}/>);
       }}
     >
       <div className={styles.item__top}>
