@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { searchAlbumsData } from "@/utils/spotify";
 import styles from "./search.module.css";
 import { getTotalItemIds } from "@/utils/app/items";
@@ -7,9 +9,10 @@ import { SearchAlbum, SearchTrack } from "@/lib/definitions";
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const query = searchParams.q || "";
+  const params = await searchParams;
+  const query = params.q || "";
 
   if (!query) {
     return <div className={styles.search}></div>;
