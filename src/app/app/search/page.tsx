@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { searchAlbumsData } from "@/utils/spotify";
 import styles from "./search.module.css";
 import { getTotalItemIds } from "@/utils/app/items";
