@@ -7,10 +7,9 @@ import { SearchAlbum, SearchTrack } from "@/lib/definitions";
 export default async function Page({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: { q?: string };
 }) {
-  const params = await searchParams;
-  const query = params.q || "";
+  const query = searchParams.q || "";
 
   if (!query) {
     return <div className={styles.search}></div>;
