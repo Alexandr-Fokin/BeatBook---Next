@@ -15,7 +15,6 @@ export async function getToken() {
   return data.access_token; // вот его потом используем в других запросах
 }
 export async function searchAlbumsData(searchValue: string) {
-  if (!searchValue) return '';
   const token = await getToken();
   const response = await fetch(
     `

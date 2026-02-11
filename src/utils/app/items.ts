@@ -2,11 +2,11 @@ import { SearchAlbum } from "@/lib/definitions";
 import { createClient } from "../supabase/server";
 import { getUserFolders } from "./folders";
 import { getServerUser } from "./profiles";
-import { release } from "os";
 
-const supabase = await createClient();
+
 
 const getUserAlbums = async (userId: string) => {
+  const supabase = await createClient();
   const { data: albums } = await supabase
     .from("albums")
     .select()
@@ -16,6 +16,7 @@ const getUserAlbums = async (userId: string) => {
 };
 
 const getUserTracks = async (userId: string) => {
+  const supabase = await createClient();
   const { data: tracks } = await supabase
     .from("tracks")
     .select()
@@ -25,6 +26,7 @@ const getUserTracks = async (userId: string) => {
 };
 
 export const getTotalItemIds = async () => {
+  const supabase = await createClient();
   const user = await getServerUser();
 
   if (!user) return [];
