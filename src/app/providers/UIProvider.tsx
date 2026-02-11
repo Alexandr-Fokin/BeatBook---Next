@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 import styles from "./UIProvider.module.css";
-import Image from "next/image";
+import FeatherIcon from "feather-icons-react";
 
 type UIContextType = {
   showModal: (content: ReactNode) => void;
@@ -52,31 +52,13 @@ export function UIProvider({ children }: { children: ReactNode }) {
       >
         <div className={`${styles.toast__icon} ${toast ? toast.type : ""}`}>
           {toast?.type === "success" && (
-            <Image
-              unoptimized
-              src="/icons/success.svg"
-              width={16}
-              height={16}
-              alt="Иконка успеха"
-            />
+            <FeatherIcon icon='check-circle'/>
           )}
           {toast?.type === "error" && (
-            <Image
-              unoptimized
-              src="/icons/error.svg"
-              width={16}
-              height={16}
-              alt="Иконка ошибки"
-            />
+            <FeatherIcon icon='alert-circle'/>
           )}
           {toast?.type === "info" && (
-            <Image
-              unoptimized
-              src="/icons/info.svg"
-              width={16}
-              height={16}
-              alt="Иконка информации"
-            />
+            <FeatherIcon icon='info'/>
           )}
         </div>
         <div className={styles.toast__content}>

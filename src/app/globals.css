@@ -2,7 +2,7 @@
 
 :root {
   /* =========================
-     Scale (основа всего)
+     Scale
   ========================= */
   --ui-scale: 1;
   --font-scale-user: 1;
@@ -90,8 +90,9 @@
   --shad-light-sm-hover: 0 3px 15px rgba(37, 37, 37, 0.1);
   --shad-light-md: 0 2px 20px rgba(37, 37, 37, 0.05);
   --shad-light-md-hover: 0 0 22px rgba(37, 37, 37, 0.1);
+  
   /* =========================
-     Motion
+     Transitions
   ========================= */
   --transition-base: all 0.3s ease-out;
 }

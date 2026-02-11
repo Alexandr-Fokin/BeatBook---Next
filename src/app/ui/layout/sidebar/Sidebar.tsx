@@ -1,13 +1,13 @@
 import { createClient } from "@/utils/supabase/server";
 import { FolderButton } from "../buttons/Buttons";
-import styles from "./Sidebar.module.css";
-import SidebarHeader from "./sidebar-header";
-import { ReactNode } from "react";
+import styles from "./Sidebar.module.scss";
+import SidebarHeader from "./SidebarHeader";
+
 type FoldersDataType = {
   id: string;
   public_id: string;
   name: string;
-  icon: number;
+  icon: string;
   folder_members: {
     user_id: string;
   }[];
@@ -65,14 +65,14 @@ export default async function Sidebar() {
     <div className={styles.sidebar}>
       <SidebarHeader />
       <div className={styles.sidebar__folders}>
-        <FolderButton link="/app/added" id={99}>
+        <FolderButton link="/app/added" icon='grid'>
           Вся Медиатека
         </FolderButton>
         {foldersData.map((folder) => (
           <FolderButton
             key={folder.id}
             link={`/app/folder/${folder.public_id}`}
-            id={folder.icon}
+            icon={folder.icon}
             shared={folder.folder_members?.length > 1 ? true : false}
           >
             {folder.name}

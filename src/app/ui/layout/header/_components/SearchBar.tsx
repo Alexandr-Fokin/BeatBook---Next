@@ -1,6 +1,7 @@
 "use client";
 
-import styles from "./SearchBar.module.css";
+import FeatherIcon from "feather-icons-react";
+import styles from "./SearchBar.module.scss";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
 
@@ -11,14 +12,14 @@ export default function SearchBar() {
   const [isPending, startTransition] = useTransition();
 
   // Берем значение из URL если мы на странице поиска
-  const currentQuery = pathname.startsWith("/app/search") 
-    ? searchParams.get("q") || "" 
+  const currentQuery = pathname.startsWith("/app/search")
+    ? searchParams.get("q") || ""
     : "";
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const query = formData.get("q") as string;
+    const query = formData.get("search") as string;
 
     if (query.trim()) {
       startTransition(() => {
@@ -29,13 +30,19 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="search"
-        name="q"
-        defaultValue={currentQuery}
-        placeholder="Поиск..."
-        className={styles.header__search_input}
-      />
+      <div className={styles.header__search_box}>
+        <input
+          type="search"
+          name="search"
+          id="search"
+          defaultValue={currentQuery}
+          placeholder="Поиск..."
+          className={styles.header__search_input}
+        />
+        <label htmlFor="search" className={styles.header__search_icon}>
+          <FeatherIcon icon="search" />
+        </label>
+      </div>
     </form>
   );
 }

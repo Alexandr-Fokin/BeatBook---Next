@@ -1,12 +1,14 @@
-"use client";
+'use client';
 
 import styles from "./MainHeader.module.css";
 // import { useAppContext } from "../components/appContext/AppContext";
-// import Popup from "../components/popup/Popup";
 // import FormRemoveFolder from "../components/formRemoveFolder/FormRemoveFolder";
 // import MenuBox from "../components/menuBox/MenuBox";
 // import { Outlet, useNavigation, useParams } from "react-router-dom";
 // import Loading from "../components/loading/Loading";
+
+
+
 import { useState, useEffect } from "react";
 import { usePathname, useSearchParams, useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
@@ -93,9 +95,13 @@ export default function MainHeader() {
     <div className={styles.main_header}>
       <div className={styles.main_header__page_title}>{title}</div>
       <div className={styles.main_header__tools}>
-        {folderRole === "owner" && <HeaderShareBtn />}
+        {folderRole === "owner" && (
+          <>
+            <HeaderShareBtn />
+            <HeaderDeleteBtn />
+          </>
+        )}
         <HeaderThemeBtn />
-        {folderRole === "owner" && <HeaderDeleteBtn />}
       </div>
     </div>
   );

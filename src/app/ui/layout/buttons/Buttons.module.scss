@@ -1,0 +1,114 @@
+.button__folder {
+  cursor: pointer;
+  padding: var(--space-sm) var(--space-md);
+  transition: var(--transition-base);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-text-lg);
+  font-weight: 500;
+  color: var(--color-text);
+  position: relative;
+
+
+  & > svg {
+    width: 17px;
+    height: 17px;
+    object-fit: contain;
+    stroke: var(--color-text);
+    transition: var(--transition-base);
+  }
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:hover > svg {
+    stroke: var(--color-accent);
+  }
+}
+
+.button__folder:global(.active) {
+  background: var(--color-text-05);
+  color: var(--color-accent);
+}
+
+.button__folder:global(.active) > svg {
+  stroke: var(--color-accent);
+}
+
+.button_folder_shared {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-accent);
+  width: 15px;
+  height: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-xl);
+  opacity: 0.35;
+}
+.button_folder_shared svg {
+  width: 8px !important;
+  height: 8px !important;
+  object-fit: contain;
+  stroke: #fff;
+  fill: none !important;
+}
+
+.button__folder:global(.active) .button_folder_shared {
+  background: var(--color-accent);
+  opacity: 1;
+}
+
+.button__home {
+  height: 46px;
+  width: 46px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shad-sm);
+  background: var(--color-surface-75);
+  transition: var(--transition-base);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button__home svg {
+  transition: var(--transition-base);
+  stroke: var(--color-text);
+  stroke-opacity: 0.5;
+  width: 26px;
+  height: 26px;
+}
+
+.button__home:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shad-sm-hover);
+}
+
+.button__home:hover svg {
+  stroke-opacity: 1;
+}
+
+.button__home:global(.active) {
+  background: var(--color-accent);
+  cursor: default;
+}
+
+.button__home:global(.active) svg {
+  stroke: var(--color-white);
+  stroke-opacity: 1;
+}
+
+.button__home:global(.active):hover {
+  transform: none;
+}

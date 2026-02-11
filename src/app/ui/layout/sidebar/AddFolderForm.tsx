@@ -1,19 +1,35 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
-import styles from "./AddFolderForm.module.css";
+import styles from "./AddFolderForm.module.scss";
 import { nanoid } from "nanoid";
-import { FolderIcon, folderIcons } from "@/app/ui/FolderIcons";
 
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useUI } from "@/app/providers/UIProvider";
+import FeatherIcon from "feather-icons-react";
 
 type AddFolderFormProps = {
   setFolderForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+const FOLDER_ICONS = [
+  "folder",
+  "heart",
+  "coffee",
+  "star",
+  "zap",
+  "thumbs-up",
+  "thumbs-down",
+  "smile",
+  "meh",
+  "frown",
+  "headphones",
+  "moon",
+];
+
 export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
   const [folderName, setFolderName] = useState("");
-  const [folderIcon, setFolderIcon] = useState(1);
+  const [folderIcon, setFolderIcon] = useState("folder");
   const [folderIconMenu, setFolderIconMenu] = useState(false);
   const { showToast } = useUI();
 
@@ -34,7 +50,7 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
       .select()
       .single();
 
-      console.log(data)
+    console.log(data);
     if (error) {
       console.log(error.message);
       alert("Ошибка при создании папки");
@@ -64,9 +80,9 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
     router.refresh();
 
     setFolderName("");
-    setFolderIcon(1);
+    setFolderIcon("folder");
   };
-  function selectFolderIcon(key: number) {
+  function selectFolderIcon(key: string) {
     setFolderIcon(key);
     setFolderIconMenu(false);
   }
@@ -80,20 +96,20 @@ export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
               className={styles.add_folder__form_icon}
               onClick={() => setFolderIconMenu((prev) => !prev)}
             >
-              <FolderIcon id={folderIcon} />
+              <FeatherIcon icon={folderIcon} />
             </div>
             {folderIconMenu && (
               <div className={styles.add_folder__form_icons}>
-                {Object.keys(folderIcons).map((key) => {
-                  const folderKey = Number(key);
-                  if (folderKey == 99) return null;
+                {FOLDER_ICONS.map((ico) => {
+                  const folderKey = ico;
+                  if (folderKey == "grid") return null;
                   return (
                     <div
                       className={`${styles.add_folder__form_icons_item} ${folderKey == folderIcon ? styles.active : ""}`}
                       onClick={() => selectFolderIcon(folderKey)}
                       key={folderKey}
                     >
-                      <FolderIcon id={folderKey} />
+                      <FeatherIcon icon={folderKey} />
                     </div>
                   );
                 })}

@@ -39,6 +39,10 @@
   align-items: center;
   background: var(--gradient-info);
   border-radius: var(--radius-sm);
+
+  svg {
+    stroke: #fff;
+  }
 }
 
 .share_folder_form_form {

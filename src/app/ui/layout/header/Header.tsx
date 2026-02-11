@@ -1,16 +1,13 @@
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { HomeButton } from "../buttons/Buttons";
-import { createClient } from "@/utils/supabase/server";
-import Account from "./Account";
+import Account from "./_components/Account";
 import SearchBar from "./_components/SearchBar";
+import { getServerUser } from "@/utils/app/profiles";
 
 export default async function Header() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getServerUser();
 
   return (
     <div className={styles.header}>

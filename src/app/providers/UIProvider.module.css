@@ -38,11 +38,12 @@
   height: 30px;
   aspect-ratio: 1/1;
 }
-.toast__icon img {
+.toast__icon svg {
   width: 18px;
   height: 18px;
   object-fit: contain;
   display: block !important;
+  stroke: #fff;
 }
 
 .toast__content {

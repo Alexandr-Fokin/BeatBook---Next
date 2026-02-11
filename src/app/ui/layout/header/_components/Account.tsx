@@ -4,7 +4,8 @@ import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import AccountMenuBtn from "./AccountMenuBtn";
-import styles from "./account.module.css";
+import styles from "./Account.module.scss";
+import FeatherIcon from "feather-icons-react";
 
 export default function Account({ user }: { user: User | null }) {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -79,13 +80,13 @@ export default function Account({ user }: { user: User | null }) {
       </div>
       {open && (
         <div className={styles.account_menu}>
-          <AccountMenuBtn href="/app/account" setOpen={setOpen}>
+          <AccountMenuBtn href="/app/account" setOpen={setOpen} icon="user">
             Мой аккаунт
           </AccountMenuBtn>
-          <AccountMenuBtn href="/app/#" setOpen={setOpen}>
+          <AccountMenuBtn href="/app/#" setOpen={setOpen} icon="download">
             Экспорт
           </AccountMenuBtn>
-          <AccountMenuBtn href="/app/#" setOpen={setOpen}>
+          <AccountMenuBtn href="/app/#" setOpen={setOpen} icon="upload">
             Импорт
           </AccountMenuBtn>
           <form action="/auth/signout" method="post" className="w-full">
@@ -93,6 +94,7 @@ export default function Account({ user }: { user: User | null }) {
               className={styles.account_menu_link + " w-full cursor-pointer"}
               type="submit"
             >
+              <FeatherIcon icon="log-out"/>
               Выйти
             </button>
           </form>

@@ -8,6 +8,7 @@ import { useUI } from "@/app/providers/UIProvider";
 import { getFolderIdByPublicId } from "@/utils/app/folders";
 import Image from "next/image";
 import { getProfileByUsername } from "@/utils/app/profiles";
+import FeatherIcon from "feather-icons-react";
 
 type FolderUserData = {
   role: string;
@@ -149,19 +150,14 @@ export default function ShareFolderForm() {
     <div className={styles.share_folder_form}>
       <div className={styles.share_folder_form_header}>
         <div className={styles.share_folder_form_header_icon}>
-          <Image
-            src="/icons/shared.svg"
-            width={24}
-            height={24}
-            alt="Иконка общего доступа"
-          />
+          <FeatherIcon icon="users" />
         </div>
         <h3>Общий доступ</h3>
         <p>Управляйте доступом для других пользователей этой папки</p>
       </div>
-      <div className='popup_block'>
+      <div className="popup_block">
         <h4>Добавить пользователя</h4>
-        <div className='popup_block_inner'>
+        <div className="popup_block_inner">
           <form
             className={styles.share_folder_form_form}
             onSubmit={(e) => addUserToFolder(e)}
@@ -170,9 +166,9 @@ export default function ShareFolderForm() {
           </form>
         </div>
       </div>
-      <div className='popup_block'>
+      <div className="popup_block">
         <h4>Текущие пользователи</h4>
-        <div className='popup_block_inner'>
+        <div className="popup_block_inner">
           {loading ? (
             <LoadingUsers />
           ) : (

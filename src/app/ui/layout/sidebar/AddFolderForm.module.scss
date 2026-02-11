@@ -1,0 +1,155 @@
+.add_folder__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.add_folder__form_top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px;
+
+  input {
+    padding: 10px var(--space-lg);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shad-light-md);
+    background: var(--color-surface-50);
+    font-size: var(--font-text-md);
+    font-weight: 500;
+    line-height: var(--line-md);
+    transition: var(--transition-base);
+    color: var(--color-text);
+    border: 1px solid var(--color-text-10);
+
+    &:focus,
+    &:hover {
+      box-shadow:var(--shad-light-md-hover);
+      transform: scale(1.02);
+      outline: none;
+    }
+    &:focus {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.add_folder__form_submit {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shad-md);
+  background: var(--color-accent);
+  font-size: var(--font-text-md);
+  font-weight: 500;
+  line-height: var(--line-md);
+  transition: var(--transition-base);
+  color: #fff;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  &:hover {
+    background: var(--color-text);
+    color: var(--color-surface);
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: var(--shad-md-hover);
+  }
+}
+
+.add_folder__form_icon_box {
+  position: relative;
+}
+.add_folder__form_icon {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shad-light-md);
+  background: var(--color-surface-50);
+  font-size: var(--font-text-md);
+  font-weight: 500;
+  line-height: var(--line-md);
+  transition: var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 1px solid var(--color-text-10);
+}
+
+.add_folder__form_icon:hover {
+  box-shadow: var(--shad-light-md-hover);
+  transform: scale(1.065);
+}
+
+.add_folder__form_icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-text-75);
+}
+
+.add_folder__form_icons {
+  position: absolute;
+  top: 42px;
+  left: 0px;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shad-md);
+  background: var(--color-surface-75);
+  backdrop-filter: blur(5px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0px;
+  z-index: 999;
+}
+
+.add_folder__form_icons_item {
+  transition: var(--transition-base);
+  height: 40px;
+  width: 40px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add_folder__form_icons_item svg {
+  transition: var(--transition-base);
+  stroke: var(--color-text-75);
+}
+
+.add_folder__form_icons_item.active {
+  background: var(--color-accent);
+  cursor: default;
+}
+
+.add_folder__form_icons_item.active:hover {
+  background: var(--color-accent);
+}
+
+.add_folder__form_icons_item.active svg {
+  stroke: #fff;
+}
+
+.add_folder__form_icons_item:hover {
+  background: rgba(56, 166, 93, 0.35);
+}
+
+.add_folder__form_icons_item svg {
+  width: 20px;
+  height: 20px;
+}

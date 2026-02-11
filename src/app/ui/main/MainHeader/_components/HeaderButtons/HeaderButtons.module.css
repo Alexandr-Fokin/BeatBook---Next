@@ -41,8 +41,8 @@
   cursor: pointer;
 }
 
-.main_header__delete_folder svg path {
-  fill: var(--color-text-50);
+.main_header__delete_folder svg {
+  stroke: var(--color-text-50);
 }
 
 .main_header__delete_folder:hover {
@@ -51,8 +51,8 @@
   box-shadow: 0px 2px 25px 0px var(--color-red-bg);
 }
 
-.main_header__delete_folder:hover svg path {
-  fill: var(--color-red-text);
+.main_header__delete_folder:hover svg {
+  stroke: var(--color-red-text);
   transition: var(--transition-base);
 }
 
@@ -78,8 +78,8 @@
   cursor: pointer;
 }
 
-.main_header__theme_btn svg path {
-  fill: var(--color-text-50) !important;
+.main_header__theme_btn svg {
+  stroke: var(--color-text-50) !important;
   transition: var(--transition-base);
 }
 
@@ -88,8 +88,8 @@
   box-shadow: 0px 2px 15px 0px #00000026;
 }
 
-.main_header__theme_btn:hover svg path {
-  fill: var(--color-text) !important;
+.main_header__theme_btn:hover svg {
+  stroke: var(--color-text) !important;
 }
 
 .main_header__theme_btn svg {
@@ -120,8 +120,8 @@
   cursor: pointer;
 }
 
-.main_header__share_btn svg path {
-  fill: var(--color-text-50) !important;
+.main_header__share_btn svg {
+  stroke: var(--color-text-50) !important;
   transition: var(--transition-base);
 }
 
@@ -130,8 +130,8 @@
   box-shadow: 0px 2px 15px 0px #00000026;
 }
 
-.main_header__share_btn:hover svg path {
-  fill: var(--color-text) !important;
+.main_header__share_btn:hover svg {
+  stroke: var(--color-text) !important;
 }
 
 .main_header__share_btn svg {
