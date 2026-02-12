@@ -12,6 +12,7 @@ import Image from "next/image";
 import { useUI } from "@/app/providers/UIProvider";
 import { useEffect, useState } from "react";
 import AddItemForm from "../AddItemForm/AddItemForm";
+import FeatherIcon from "feather-icons-react";
 
 export default function SearchItemAlbum({ data }: { data: SearchAlbum }) {
   const { showModal } = useUI();
@@ -21,7 +22,7 @@ export default function SearchItemAlbum({ data }: { data: SearchAlbum }) {
     <li
       className={styles.item + (data.isAdded ? ` ${styles.added}` : "")}
       onClick={() => {
-        // showModal(<AddItemForm item={data}/>);
+        showModal(<AddItemForm item={data} />);
       }}
     >
       <div className={styles.item__top}>
@@ -32,21 +33,9 @@ export default function SearchItemAlbum({ data }: { data: SearchAlbum }) {
         />
         <a className={styles.item__like}>
           {data.isAdded ? (
-            <Image
-              alt="Айтем добавлен"
-              src="/icons/check-svg.svg"
-              unoptimized
-              width={20}
-              height={20}
-            ></Image>
+            <FeatherIcon icon="check" />
           ) : (
-            <Image
-              alt="Добавить айтем"
-              src="/icons/plus-svg.svg"
-              unoptimized
-              width={20}
-              height={20}
-            ></Image>
+            <FeatherIcon icon="plus" />
           )}
         </a>
       </div>

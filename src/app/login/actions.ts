@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { nanoid } from "nanoid";
 
 export async function login(formData: FormData) {
   const supabase = await createClient();
@@ -27,20 +26,6 @@ export async function login(formData: FormData) {
     .select("*")
     .eq("id", data.user.id)
     .single();
-
-  // if (profile) {
-  //   const { error: foldersError } = await supabase.from("folders").insert({
-  //     public_id: nanoid(22),
-  //     owner_id: data.user.id,
-  //     name: "Тестовая папка",
-  //     icon: 1,
-  //   });
-
-  //   if (foldersError) {
-  //     console.log("Ошибка при создании папок: " + foldersError.message);
-  //     return;
-  //   }
-  // }
 
   if (!profile) {
     await supabase.from("profiles").insert({

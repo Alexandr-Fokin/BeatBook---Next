@@ -35,7 +35,7 @@ export async function signup(formData: FormData) {
       public_id: nanoid(22),
       owner_id: authData.user.id,
       name: "Тестовая папка",
-      icon: 1,
+      icon: 'folder',
     });
 
     if (foldersError) {

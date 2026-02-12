@@ -121,4 +121,26 @@ body > :global(.layout-login)::before {
   font-size: var(--font-text-lg);
   font-weight: 700;
   line-height: 135%;
+  cursor: pointer;
+  transition: var(--transition-base);
+
+  &:hover {
+    background: var(--color-text);
+    color: var(--color-surface);
+  }
+}
+.form_login_descr {
+  font-size: var(--font-text-md);
+  text-align: center;
+  color: var(--color-text-75);
+
+  a {
+    color: var(--color-accent);
+    font-weight: 600;
+    transition: var(--transition-base);
+
+    &:hover {
+      opacity: .5;
+    }
+  }
 }

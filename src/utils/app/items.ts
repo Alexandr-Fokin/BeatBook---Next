@@ -1,6 +1,6 @@
 import { SearchAlbum } from "@/lib/definitions";
 import { createClient } from "../supabase/server";
-import { getUserFolders } from "./folders";
+import { getUserFolderMembers } from "./folders";
 import { getServerUser } from "./profiles";
 
 
@@ -31,7 +31,7 @@ export const getTotalItemIds = async () => {
 
   if (!user) return [];
 
-  const folders = await getUserFolders(user.id);
+  const folders = await getUserFolderMembers(user.id);
   const folderIds = folders?.map((f) => f.id ?? []);
 
   if (!folderIds || folderIds.length === 0) return [];

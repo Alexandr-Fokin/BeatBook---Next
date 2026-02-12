@@ -2,14 +2,14 @@ import styles from "./SearchItemTrack.module.css";
 import { SearchTrack } from "@/lib/definitions";
 import { useUI } from "@/app/providers/UIProvider";
 import { findItemType } from "@/utils/app/hooks";
-import Image from "next/image";
+import FeatherIcon from "feather-icons-react";
 
 // import { DataStore } from "../../../dataStore";
 // import { useAppContext } from "../../appContext/AppContext";
 // import FormAddItem from "../../formAddItem/FormAddItem";
 
 export default function SearchItemTrack({ data }: { data: SearchTrack }) {
-//   const { showModal } = useUI();
+  //   const { showModal } = useUI();
   const dataType = findItemType(data);
 
   //   const { setPopup } = useAppContext();
@@ -79,21 +79,9 @@ export default function SearchItemTrack({ data }: { data: SearchTrack }) {
       <div className={styles.item__right}>
         <a className={styles.item__right_like}>
           {data.isAdded ? (
-            <Image
-              alt="Айтем добавлен"
-              src="/icons/check-svg.svg"
-              unoptimized
-              width={20}
-              height={20}
-            ></Image>
+            <FeatherIcon icon="check" />
           ) : (
-            <Image
-              alt="Добавить айтем"
-              src="/icons/plus-svg.svg"
-              unoptimized
-              width={20}
-              height={20}
-            ></Image>
+            <FeatherIcon icon="plus" />
           )}
         </a>
       </div>

@@ -19,12 +19,7 @@ import {
   HeaderShareBtn,
 } from "./_components/HeaderButtons/HeaderButtons";
 import { getFolderIdByPublicId } from "@/utils/app/folders";
-
-const STATIC_TITLES: Record<string, string> = {
-  "/app/added": "Вся Медиатека",
-  "/app": "Главная",
-  "/app/account": "Профиль",
-};
+import { STATIC_TITLES } from "@/lib/constants";
 
 export default function MainHeader() {
   const user = useUser();

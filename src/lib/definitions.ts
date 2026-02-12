@@ -1,3 +1,5 @@
+import { Timestamp } from "next/dist/server/lib/cache-handlers/types";
+
 export type SearchError = {
   error: {
     message: string;
@@ -44,7 +46,7 @@ export type SearchAlbum = {
   release_date: string;
   release_date_precision: string;
   total_tracks: number;
-  type: string;
+  type: "album";
   uri: string;
   isAdded?: boolean;
 };
@@ -71,7 +73,7 @@ export type SearchTrack = {
   popularity: number;
   preview_url: string | null;
   track_number: number;
-  type: string;
+  type: "track";
   uri: string;
   isAdded?: boolean;
 };
@@ -169,3 +171,34 @@ export type ItemAlbum = {
   total_tracks: number;
   type: "album";
 };
+
+export type FolderMemberSupabase = {
+  id: string;
+  folder_id: string;
+  user_id: string;
+  role: "owner" | "editor";
+  added_at: Timestamp;
+};
+export type FolderSupabase = {
+  id: string;
+  owner_id: string;
+  public_id: string;
+  name: string;
+  parent_id: string,
+  icon: Timestamp;
+};
+
+export type FolderIconsType = [
+  "folder",
+  "heart",
+  "coffee",
+  "star",
+  "zap",
+  "thumbs-up",
+  "thumbs-down",
+  "smile",
+  "meh",
+  "frown",
+  "headphones",
+  "moon",
+];

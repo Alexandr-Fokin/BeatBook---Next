@@ -7,25 +7,13 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useUI } from "@/app/providers/UIProvider";
 import FeatherIcon from "feather-icons-react";
+import { FOLDER_ICONS } from "@/lib/constants";
 
 type AddFolderFormProps = {
   setFolderForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const FOLDER_ICONS = [
-  "folder",
-  "heart",
-  "coffee",
-  "star",
-  "zap",
-  "thumbs-up",
-  "thumbs-down",
-  "smile",
-  "meh",
-  "frown",
-  "headphones",
-  "moon",
-];
+
 
 export default function AddFolderForm({ setFolderForm }: AddFolderFormProps) {
   const [folderName, setFolderName] = useState("");

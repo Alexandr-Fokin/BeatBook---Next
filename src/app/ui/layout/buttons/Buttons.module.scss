@@ -13,7 +13,6 @@
   color: var(--color-text);
   position: relative;
 
-
   & > svg {
     width: 17px;
     height: 17px;
@@ -85,7 +84,7 @@
 .button__home svg {
   transition: var(--transition-base);
   stroke: var(--color-text);
-  stroke-opacity: 0.5;
+  opacity: 0.5;
   width: 26px;
   height: 26px;
 }
@@ -96,7 +95,7 @@
 }
 
 .button__home:hover svg {
-  stroke-opacity: 1;
+  opacity: 1;
 }
 
 .button__home:global(.active) {
@@ -106,7 +105,7 @@
 
 .button__home:global(.active) svg {
   stroke: var(--color-white);
-  stroke-opacity: 1;
+  opacity: 1;
 }
 
 .button__home:global(.active):hover {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { login } from "./actions";
-import styles from "./login.module.css";
+import styles from "./login.module.scss";
 
 export default function LoginPage() {
   return (
@@ -31,7 +31,7 @@ export default function LoginPage() {
         <button formAction={login} className={styles.form_login_btn}>
           Войти
         </button>
-        <p>
+        <p className={styles.form_login_descr}>
           Нет аккаунта? <Link href="/signup">Зарегистрируйтесь</Link>
         </p>
       </form>

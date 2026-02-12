@@ -21,7 +21,8 @@
     box-shadow: var(--shad-sm-hover);
 
     & + .header__search_icon svg {
-      stroke: var(--color-text-75);
+      stroke: var(--color-text);
+      opacity: .75;
     }
   }
 
@@ -53,7 +54,8 @@
     width: 24px;
     height: 24px;
     object-fit: contain;
-    stroke: var(--color-text-50);
+    stroke: var(--color-text);
+    opacity: .5;
     transition: var(--transition-base);
   }
 }

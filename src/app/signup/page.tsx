@@ -1,5 +1,5 @@
 import { signup } from "./actions";
-import styles from "../login/login.module.css";
+import styles from "../login/login.module.scss";
 import Link from "next/link";
 
 export default function SignupPage() {
@@ -42,7 +42,7 @@ export default function SignupPage() {
         <button formAction={signup} className={styles.form_login_btn}>
           Зарегистрироваться
         </button>
-        <p>
+        <p className={styles.form_login_descr}>
           Уже есть аккаунт? <Link href='/login'>Войдите в него</Link>
         </p>
       </form>
