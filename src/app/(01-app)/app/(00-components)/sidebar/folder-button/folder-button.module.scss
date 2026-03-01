@@ -1,0 +1,68 @@
+
+.button__folder {
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);
+    transition: var(--transition-base);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--font-text-lg);
+    font-weight: 500;
+    color: var(--color-text);
+    position: relative;
+  
+    & > svg {
+      width: 17px;
+      height: 17px;
+      object-fit: contain;
+      stroke: var(--color-text);
+      transition: var(--transition-base);
+    }
+    &:hover {
+      color: var(--color-accent);
+    }
+  
+    &:hover > svg {
+      stroke: var(--color-accent);
+    }
+  }
+  
+  .button__folder:global(.active) {
+    background: var(--color-text-05);
+    color: var(--color-accent);
+  }
+  
+  .button__folder:global(.active) > svg {
+    stroke: var(--color-accent);
+  }
+  
+  .button_folder_shared {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-accent);
+    width: 15px;
+    height: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-xl);
+    opacity: 0.35;
+  }
+  .button_folder_shared svg {
+    width: 8px !important;
+    height: 8px !important;
+    object-fit: contain;
+    stroke: #fff;
+    fill: none !important;
+  }
+  
+  .button__folder:global(.active) .button_folder_shared {
+    background: var(--color-accent);
+    opacity: 1;
+  }

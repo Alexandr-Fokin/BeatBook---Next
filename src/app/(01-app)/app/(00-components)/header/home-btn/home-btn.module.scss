@@ -1,0 +1,47 @@
+
+
+.button__home {
+  height: 46px;
+  width: 46px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shad-sm);
+  background: var(--color-surface-75);
+  transition: var(--transition-base);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.button__home svg {
+  transition: var(--transition-base);
+  stroke: var(--color-text);
+  opacity: 0.5;
+  width: 26px;
+  height: 26px;
+}
+
+.button__home:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shad-sm-hover);
+}
+
+.button__home:hover svg {
+  opacity: 1;
+}
+
+.button__home:global(.active) {
+  background: var(--color-accent);
+  cursor: default;
+}
+
+.button__home:global(.active) svg {
+  stroke: var(--color-white);
+  opacity: 1;
+}
+
+.button__home:global(.active):hover {
+  transform: none;
+}

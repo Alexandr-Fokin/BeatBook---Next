@@ -1,0 +1,31 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.item__head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+}
+
+.item_img {
+    width: 300px;
+    height: fit-content;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    background: rgba(37, 37, 37, 0.05);
+    border-radius: 15px;
+    background: #f0f0f0;
+    transition: all .3s ease-out;
+    box-shadow: 0px 2px 15px 0px rgba(37, 37, 37, 0.15);
+}
+
+.item_img:hover {
+    box-shadow: 0px 6px 15px 0px rgba(37, 37, 37, 0.45);
+    transform: scale(1.007);
+}

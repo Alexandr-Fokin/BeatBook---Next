@@ -1,0 +1,48 @@
+.sceletons__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0px;
+  width: 100%;
+  overflow: hidden;
+}
+.sceletons__grid_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0px;
+  padding: var(--space-sm);
+  width: 100%;
+}
+.sceletons__grid_item_top {
+  position: relative;
+  height: fit-content;
+  display: flex;
+  width: 100%;
+}
+.sceletons__grid_item_img {
+  width: 100%;
+  height: fit-content;
+  aspect-ratio: 1 / 1;
+  border-radius: 15px;
+}
+.sceletons__grid_item_bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: var(--space-sm) var(--space-xs) var(--space-xs) var(--space-xs);
+  width: 100%;
+}
+
+.sceletons__grid_item_name {
+  height: var(--font-text-md);
+  max-width: 90%;
+  width: 100%;
+  border-radius: var(--radius-xl);
+}
+
+.sceletons__grid_item_meta {
+  height: var(--font-text-sm);
+  width: 65%;
+  border-radius: var(--radius-xl);
+}

@@ -1,0 +1,127 @@
+.sidebar {
+  padding: var(--space-sm);
+  background: var(--color-surface-50);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shad-md);
+  height: 100%;
+  position: sticky;
+  top: var(--space-sm);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  z-index: 100;
+  width: 100%;
+  min-height: 0;
+}
+
+.sidebar__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar__header_title {
+  font-size: var(--font-text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  padding-left: var(--space-sm);
+  opacity: 0.75;
+}
+
+.sidebar__header_add_btn {
+  display: flex;
+  box-sizing: border-box;
+  width: fit-content;
+  border-radius: var(--radius-xl);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  color: var(--color-text-50);
+  font-weight: 500;
+  transition: var(--transition-base);
+  font-size: var(--font-text-lg);
+  line-height: var(--line-md);
+  background: var(--color-text-07);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.sidebar__header_add_btn svg {
+  height: 17px;
+  width: 17px;
+  stroke: var(--color-text-50);
+  transition: var(--transition-base);
+}
+
+.sidebar__header_add_btn:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.sidebar__header_add_btn:hover svg {
+  stroke: var(--color-white);
+}
+
+.sidebar__form_add_folder {
+  width: 100%;
+  padding: var(--space-sm);
+  border-radius: calc(var(--radius-md) + var(--radius-xs));
+  border: 1px solid var(--color-text-10);
+}
+.sidebar__folders {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  width: 100%;
+  overflow-y: auto;
+  min-height: 0;
+  height: 100%;
+  border-radius: var(--radius-sm);
+  padding-right: var(--space-xs);
+}
+.sidebar__folders.loading {
+  overflow: hidden;
+}
+.sidebar__folders::-webkit-scrollbar {
+  width: 6px; /* очень тонкий */
+}
+
+.sidebar__folders::-webkit-scrollbar-track {
+  background: transparent; /* убираем фон */
+}
+
+.sidebar__folders::-webkit-scrollbar-thumb {
+  background: var(--color-text-07); /* полупрозрачный */
+  border-radius: 10px;
+}
+
+.sidebar__folders::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-20);
+}
+
+.sceleton_folder {
+  padding: var(--space-sm) var(--space-md);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+  height: 38.5px;
+}
+.sceleton_folder_icon {
+  width: 17px;
+  height: 17px;
+  border-radius: 6px;
+}
+.sceleton_folder_text {
+  width: 150px;
+  height: 14px;
+  border-radius: 6px;
+}

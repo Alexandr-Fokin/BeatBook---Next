@@ -309,3 +309,34 @@ body {
   box-shadow: var(--shad-light-sm);
   width: 100%;
 }
+
+
+.sceleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-text-10);
+}
+.sceleton::before {
+  content: "";
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-surface-75),
+    transparent
+  );
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: skewX(-10deg) translateX(-100%);
+  }
+  100% {
+    transform: skewX(-10deg) translateX(200%);
+  }
+}

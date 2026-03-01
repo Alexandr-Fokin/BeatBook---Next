@@ -1,0 +1,96 @@
+.add_item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+.add_item__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.add_item__info_img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.add_item__info_name {
+  text-align: left;
+  font-size: var(--font-title-sm);
+  line-height: var(--line-md);
+  font-weight: 700;
+  color: var(--color-text);
+  max-width: 90%;
+  width: fit-content;
+  margin-top: var(--space-sm);
+}
+.add_item__info_meta {
+  text-align: left;
+  font-size: var(--font-text-md);
+  line-height: var(--line-lg);
+  font-weight: 500;
+  color: var(--color-text-75);
+  max-width: 75%;
+  width: fit-content;
+}
+.add_item__folders_box {
+  padding: var(--space-sm);
+  padding-right: var(--space-xs);
+  overflow: hidden;
+}
+.add_item__folders {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  justify-content: flex-start;
+  align-items: center;
+  max-height: 30vh;
+  overflow-y: scroll;
+  padding-right: var(--space-xs);
+  border-radius: var(--radius-sm);
+}
+.add_item__folders::-webkit-scrollbar {
+  width: 5px; /* очень тонкий */
+}
+
+.add_item__folders::-webkit-scrollbar-track {
+  background: transparent; /* убираем фон */
+}
+
+.add_item__folders::-webkit-scrollbar-thumb {
+  background: var(--color-text-07); /* полупрозрачный */
+  border-radius: 10px;
+}
+
+.add_item__folders::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-20);
+}
+
+.add_item__tools {
+  width: 100%;
+}
+
+.add_item__tools_add_folder_btn {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: var(--radius-xl);
+  padding: var(--space-sm) var(--space-lg);
+  cursor: pointer;
+  color: var(--color-text-50);
+  font-weight: 500;
+  transition: var(--transition-base);
+  font-size: var(--font-text-lg);
+  line-height: var(--line-md);
+}
+
+.add_item__tools_add_folder_btn:hover {
+  background: var(--color-text-07);
+}
