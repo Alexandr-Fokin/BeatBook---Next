@@ -24,7 +24,9 @@ export default function Sidebar() {
     <div className={styles.sidebar}>
       <SidebarHeader />
 
-      <div className={`${styles.sidebar__folders} ${isLoading ? styles.loading : ''}`}>
+      <div
+        className={`${styles.sidebar__folders} ${isLoading ? styles.loading : ""}`}
+      >
         {isLoading &&
           skeletons.map((i) => (
             <div className="flex flex-col w-full gap-0" key={i}>
@@ -39,23 +41,17 @@ export default function Sidebar() {
             </div>
           ))}
         {isError && <div>Ошибка: {error.message}</div>}
-        {folders && (
-          <>
-            <FolderButton link="/app/added" icon="grid">
-              Вся Медиатека
+        {folders &&
+          folders?.map((folder) => (
+            <FolderButton
+              key={folder.id}
+              link={`/app/folder/${folder.public_id}`}
+              icon={folder.icon}
+              shared={folder.folder_members?.length > 1 ? true : false}
+            >
+              {folder.name}
             </FolderButton>
-            {folders?.map((folder) => (
-              <FolderButton
-                key={folder.id}
-                link={`/app/folder/${folder.public_id}`}
-                icon={folder.icon}
-                shared={folder.folder_members?.length > 1 ? true : false}
-              >
-                {folder.name}
-              </FolderButton>
-            ))}
-          </>
-        )}
+          ))}
       </div>
     </div>
   );

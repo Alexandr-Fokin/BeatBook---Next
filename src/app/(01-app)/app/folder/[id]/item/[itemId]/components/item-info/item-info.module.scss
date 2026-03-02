@@ -1,31 +1,98 @@
-.item {
+.item__btns {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: var(--space-sm);
+  z-index: 99;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-sm);
+
+  .item__btn_save,
+  .item__btn_edit,
+  .item__btn_cancel {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    gap: var(--space-sm);
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--radius-xl);
+    width: fit-content;
+    padding: var(--space-sm) var(--space-md);
+    height: fit-content;
+    box-shadow: var(--shad-sm);
+    background: var(--color-surface-50);
+    transition: var(--transition-base);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    font-weight: 500;
+    font-size: var(--font-text-lg);
+    line-height: var(--line-md);
+    color: var(--color-text-75);
+    cursor: pointer;
+
+    svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--color-text-75);
+      transition: all 0.3s ease-out;
+    }
+
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 2px 15px #00000026;
+    }
+  }
+  .item__btn_save {
+    &:hover {
+      color: var(--color-accent) !important;
+
+      svg {
+        stroke: var(--color-accent) !important;
+      }
+    }
+  }
+  .item__btn_cancel {
+    &:hover {
+      color: var(--color-red-text) !important;
+    //   background: var(--color-red-bg) !important;
+
+      svg {
+        stroke: var(--color-red-text) !important;
+      }
+    }
+  }
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .item__head {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 8px;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
 }
 
 .item_img {
-    width: 300px;
-    height: fit-content;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
-    background: rgba(37, 37, 37, 0.05);
-    border-radius: 15px;
-    background: #f0f0f0;
-    transition: all .3s ease-out;
-    box-shadow: 0px 2px 15px 0px rgba(37, 37, 37, 0.15);
+  width: 300px;
+  height: fit-content;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  background: rgba(37, 37, 37, 0.05);
+  border-radius: 15px;
+  background: #f0f0f0;
+  transition: all 0.3s ease-out;
+  box-shadow: 0px 2px 15px 0px rgba(37, 37, 37, 0.15);
 }
 
 .item_img:hover {
-    box-shadow: 0px 6px 15px 0px rgba(37, 37, 37, 0.45);
-    transform: scale(1.007);
+  box-shadow: 0px 6px 15px 0px rgba(37, 37, 37, 0.45);
+  transform: scale(1.007);
 }

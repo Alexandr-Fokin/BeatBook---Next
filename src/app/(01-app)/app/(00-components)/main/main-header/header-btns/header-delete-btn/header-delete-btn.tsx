@@ -24,7 +24,7 @@ export function HeaderDeleteBtn() {
       { publicId: publicId },
       {
         onSuccess: ({data}) => {
-          router.replace("/app/added");
+          router.replace("/app/");
           showToast(
             `Папка ${data.name} удалена`,
             "Папка успешно удалена из вашей медиатеки",

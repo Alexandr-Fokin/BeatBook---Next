@@ -7,6 +7,10 @@ import { createClient } from "@/actions/supabase/server";
 
 export type LoginState = {
   error?: string;
+  values?: {
+    email?: string;
+    password?: string;
+  };
 };
 
 export async function login(formData: FormData) {
@@ -54,7 +58,7 @@ export async function newLogin(
   const password = formData.get("password") as string;
 
   if (!email || !password) {
-    return { error: "Введите email и пароль" };
+    return { error: "Введите email и пароль", values: { email, password } };
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -63,7 +67,7 @@ export async function newLogin(
   });
 
   if (error) {
-    return { error: "Неверный email или пароль" };
+    return { error: "Неверный email или пароль", values: { email, password } };
   }
 
   const { data: profile } = await supabase

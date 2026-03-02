@@ -1,5 +1,4 @@
 export const STATIC_TITLES: Record<string, string> = {
-  "/app/added": "Вся Медиатека",
   "/app": "Главная",
   "/app/account": "Профиль",
 };

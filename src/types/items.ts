@@ -16,8 +16,8 @@ export type SupabaseAlbum = {
   release_date: string;
   added_at?: string;
   tracks?: ItemTrack[];
-  rating?: number;
-  comment?: string;
+  rating?: { user_id: string; score: number }[];
+  comments?: { user_id: string; comment: string }[];
 };
 export type SupabaseTrack = {
   type: "track";
@@ -34,8 +34,8 @@ export type SupabaseTrack = {
   images: ItemImage[];
   release_date: string;
   added_at?: string;
-  rating?: number;
-  comment?: string;
+  rating?: { user_id: string; score: number }[];
+  comments?: { user_id: string; comment: string }[];
 };
 
 export type ItemArtist = {
@@ -63,8 +63,8 @@ export type ItemTrack = {
   artists: ItemArtist[];
   duration: number;
   track_number: number;
-  rating?: number;
-  comment?: string;
+  rating?: { user_id: string; score: number }[];
+  comments?: { user_id: string; comment: string }[];
   added_at?: string;
   explicit: boolean;
   external_url: string;

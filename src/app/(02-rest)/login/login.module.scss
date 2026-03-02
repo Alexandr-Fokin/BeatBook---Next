@@ -1,4 +1,4 @@
-body > :global(.layout-login){
+body > :global(.layout-login) {
   margin: 0;
 
   /* background: linear-gradient(120deg, #f6d365 0%, #fda085 30%, #a1c4fd 70%, #c2e9fb 100%);
@@ -20,55 +20,54 @@ body > :global(.layout-login){
   }
 } */
 body > :global(.layout-login)::before {
-    content: '';
-    height: 85vh;
-    width: 85vh;
-    background: url('/plast-2.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.05;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 10;
-    animation: circle;
-    animation-timing-function: linear;
-    animation-duration: 20s;
-    animation-delay: 0;
-    animation-iteration-count: infinite;
+  content: "";
+  height: 85vh;
+  width: 85vh;
+  background: url("/plast-2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.05;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  animation: circle;
+  animation-timing-function: linear;
+  animation-duration: 20s;
+  animation-delay: 0;
+  animation-iteration-count: infinite;
 }
-@keyframes circle{
-    0% {
-        transform: translate(-50%,-50%) rotate(0deg);
-    }
-    100% {
-        transform: translate(-50%,-50%) rotate(360deg);
-    }
+@keyframes circle {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
-    max-width: 800px;
-    position: relative;
-    z-index: 99;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  z-index: 99;
 }
 .logo_id {
-    height: 18px;
-    width: fit-content;
-    margin-bottom: 15px;
+  height: 18px;
+  width: fit-content;
+  margin-bottom: 15px;
 }
 .login_title {
-    font-size: var(--font-title-lg);
-    font-weight: 700;
-    line-height: var(--line-md);
-    color: var(--color-text);
-
+  font-size: var(--font-title-lg);
+  font-weight: 700;
+  line-height: var(--line-md);
+  color: var(--color-text);
 }
 .login_form {
   display: flex;
@@ -89,6 +88,7 @@ body > :global(.layout-login)::before {
   justify-content: flex-start;
   align-items: flex-start;
   gap: var(--space-xs);
+  position: relative;
 }
 .form_input_box label {
   font-size: var(--font-text-md);
@@ -112,6 +112,25 @@ body > :global(.layout-login)::before {
 .form_input_box input::placeholder {
   color: var(--color-text-50);
 }
+.form_login_password_eye {
+  position: absolute;
+  right: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  stroke: var(--color-surface);
+  width: 22px;
+  height: 22px;
+  padding: var(--space-xs);
+  background: var(--color-accent);
+  transition: var(--transition-base);
+  border-radius: var(--radius-xl);
+
+  &:hover {
+    opacity: 0.5;
+    background: var(--color-text);
+  }
+}
 .login_form .form_login_btn {
   width: 100%;
   padding: var(--space-sm) var(--space-md);
@@ -128,6 +147,15 @@ body > :global(.layout-login)::before {
     background: var(--color-text);
     color: var(--color-surface);
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: progress;
+    &:hover {
+      color: #fff;
+      background: var(--color-accent);
+    }
+  }
 }
 .form_login_descr {
   font-size: var(--font-text-md);
@@ -140,7 +168,22 @@ body > :global(.layout-login)::before {
     transition: var(--transition-base);
 
     &:hover {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
+}
+
+.form_login_error {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-text-md);
+  font-weight: 500;
+  line-height: var(--line-lg);
+  text-align: center;
+  color: var(--color-red-text);
+  background: var(--color-red-bg);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

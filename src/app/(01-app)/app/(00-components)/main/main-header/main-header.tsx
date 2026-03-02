@@ -32,8 +32,8 @@ export default function MainHeader() {
   const pathname = usePathname();
   const supabase = createClient();
 
-  console.log("folderMembersData", folderMembersData);
-  console.log("folders", folders);
+  // console.log("folderMembersData", folderMembersData);
+  // console.log("folders", folders);
 
   const folderRole = useMemo(() => {
     const publicId = params.id?.toString();

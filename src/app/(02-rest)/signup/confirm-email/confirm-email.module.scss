@@ -1,4 +1,41 @@
-
+.message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    z-index: 99;
+}
 .message_confirm {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 400px;
+    padding: var(--space-lg);
+    background: var(--color-surface-50);
+    box-shadow: var(--shad-md);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(7px);
+    margin-bottom: 50px;
+}
+.message_title {
+    font-size: var(--font-title-lg);
+    font-weight: 700;
+    line-height: var(--line-md);
+    color: var(--color-text);
+    text-align: center;
+}
+.message_confirm p {
+    font-size: var(--font-text-lg);
+    color: var(--color-text-75);
+    font-weight: 500;
+    line-height: var(--line-lg);
+    text-align: center;
+    max-width: 85%;
 }

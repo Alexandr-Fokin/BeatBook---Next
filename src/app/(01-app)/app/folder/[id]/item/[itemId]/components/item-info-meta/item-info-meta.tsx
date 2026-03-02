@@ -1,14 +1,20 @@
+"use client";
+
 import styles from "./item-info-meta.module.scss";
 // import { findItemType } from "../../../hooks";
 import { findItemType } from "@/hooks/items";
 import AddItemForm from "@/app/(01-app)/app/(00-components)/items/add-item-form/add-item-form";
 import { SupabaseAlbum, SupabaseTrack } from "@/types/items";
 import { useUI } from "@/app/(02-rest)/providers/UIProvider";
+import { Dispatch, SetStateAction, useState } from "react";
+import FeatherIcon from "feather-icons-react";
 
 export default function ItemInfoMeta({
   item,
+  isEditable,
 }: {
   item: SupabaseAlbum | SupabaseTrack;
+  isEditable: boolean;
 }) {
   const { showModal } = useUI();
   const releaseYear = new Date(item.release_date).getFullYear();
@@ -20,36 +26,41 @@ export default function ItemInfoMeta({
 
   return (
     <div className={styles.item_meta}>
-      <div className="item_meta__top">
-        <div className="rating">{item.rating} / 10</div>
-        <div className="flex flex-col gap-1 justify-center items-baseline">
-          <div className="item_name default_subtitle_lg">{item.name}</div>
-          <div className="item_artists">
-            {item.artists.map((artist, i) => {
-              if (i < item.artists.length - 1) {
-                return (
-                  <a
-                    className="default_subtitle_md"
-                    target="_blank"
-                    href={artist.external_urls.spotify}
-                    key={artist.id}
-                  >
-                    {artist.name},{" "}
-                  </a>
-                );
-              }
+      <div className={styles.item_meta__top}>
+        <div className={styles.item_meta__rating}>
+          <FeatherIcon icon="star" />0 / 10
+        </div>
+        <textarea
+          disabled={!isEditable}
+          className={styles.item_meta__name}
+          defaultValue={item.name}
+        />
+
+        <div className="item_artists">
+          {item.artists.map((artist, i) => {
+            if (i < item.artists.length - 1) {
               return (
                 <a
-                  target="_blank"
                   className="default_subtitle_md"
+                  target="_blank"
                   href={artist.external_urls.spotify}
                   key={artist.id}
                 >
-                  {artist.name}
+                  {artist.name},{" "}
                 </a>
               );
-            })}
-          </div>
+            }
+            return (
+              <a
+                target="_blank"
+                className="default_subtitle_md"
+                href={artist.external_urls.spotify}
+                key={artist.id}
+              >
+                {artist.name}
+              </a>
+            );
+          })}
         </div>
         <div>
           <span>{findItemType(item)} </span>-<span> {releaseYear}</span>

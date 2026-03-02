@@ -30,6 +30,7 @@ export async function searchAlbumsData(searchValue: string) {
   );
   const data = await response.json();
   console.log(data);
+  if(data.error) return data
   const albums = data.albums.items.map((i: SearchAlbum): SupabaseAlbum => {
     return {
       item_id: i.id,

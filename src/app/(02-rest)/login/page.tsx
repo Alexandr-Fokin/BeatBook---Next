@@ -3,11 +3,20 @@
 import Link from "next/link";
 import { login, LoginState, newLogin } from "./actions";
 import styles from "./login.module.scss";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
+import FeatherIcon from "feather-icons-react";
 
 export default function LoginPage() {
   const initialState: LoginState = { error: undefined };
   const [state, action, isPending] = useActionState(newLogin, initialState);
+  const [passwordType, setPasswordType] = useState("password");
+
+  const togglePasswordType = () => {
+    setPasswordType((prev) => {
+      if (prev === "password") return "text";
+      else return "password";
+    });
+  };
 
   return (
     <div className={styles.login}>
@@ -22,6 +31,7 @@ export default function LoginPage() {
             type="email"
             placeholder="Email"
             required
+            defaultValue={state.values?.email}
           />
         </div>
         <div className={styles.form_input_box}>
@@ -29,18 +39,24 @@ export default function LoginPage() {
           <input
             id="password"
             name="password"
-            type="password"
+            type={passwordType}
             placeholder="Пароль"
             required
+            defaultValue={state.values?.password}
+          />
+          <FeatherIcon
+            icon={passwordType === "password" ? "eye" : "eye-off"}
+            className={styles.form_login_password_eye}
+            onClick={togglePasswordType}
           />
         </div>
         <button className={styles.form_login_btn} disabled={isPending}>
           {isPending ? "Входим..." : "Войти"}
         </button>
         <p className={styles.form_login_descr}>
-          Нет аккаунта? <Link href="/signup">Зарегистрируйтесь</Link>
+          Нет аккаунта? <Link href="/signup">Зарегистрироваться</Link>
         </p>
-        {state.error && <p>Ошибка: {state.error}</p>}
+        {state.error && <p className={styles.form_login_error}>Ошибка: {state.error}</p>}
       </form>
     </div>
   );
